@@ -101,11 +101,10 @@ form.addEventListener("submit", (e) => {
   if (!form.checkValidity()) {
     e.preventDefault();
     e.stopPropagation();
-  form.classList.add('was-validated')
+    form.classList.add("was-validated");
   } else {
-
-  e.preventDefault();
-  generate(false);
+    e.preventDefault();
+    generate(false);
   }
 });
 
