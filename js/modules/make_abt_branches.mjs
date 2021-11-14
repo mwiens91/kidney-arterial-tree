@@ -91,8 +91,11 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
         firstDaughterDiam
       );
 
-      pushBranch(makeChildBranch(branch, firstDaughterDiam, true));
-      pushBranch(makeChildBranch(branch, secondDaughterDiam, false));
+      // Randomly decide if the first daughter skews left or right
+      const firstIsLeft = !!Math.round(Math.random());
+
+      pushBranch(makeChildBranch(branch, firstDaughterDiam, firstIsLeft));
+      pushBranch(makeChildBranch(branch, secondDaughterDiam, !firstIsLeft));
     }
   };
 
