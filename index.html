@@ -25,42 +25,55 @@
 				</div>
 			</div>
 			<div class="row pt-2">
-				<!-- the options -->
-				<div class="col-sm-auto bg-light pt-3 mb-3">
-					<form id="form-options">
-						<div class="mb-3">
-							<label for="form-select" class="form-label">tree type</label>
-							<div>
-								<select id="form-select" class="form-select" aria-label="select-tree">
-									<option selected value="ABT">ABT</option>
-									<option value="KSABT">KSABT</option>
-								</select>
+				<!-- the right column -->
+				<div class="col-sm-auto p-0 m-0" style="min-width: 300px">
+					<!-- the options form -->
+					<div class="bg-light pt-3" style="padding-left: 15px; padding-right: 15px; padding-bottom: 1px">
+						<form id="form-options">
+							<div class="mb-3">
+								<label for="form-select" class="form-label">tree type</label>
+								<div>
+									<select id="form-select" class="form-select" aria-label="select-tree">
+										<option selected value="ABT">ABT</option>
+										<option value="KSABT">KSABT</option>
+									</select>
+								</div>
 							</div>
-						</div>
-						<div class="mb-3">
-							<label for="input-init-diam" class="form-label">initial diameter (≥30μm)</label>
-							<div class="input-group">
-								<input type="number" id="input-init-diam" value=100 min=30 step="any" class="form-control" required>
-								<span class="input-group-text">μm</span>
+							<div class="mb-3">
+								<label for="input-init-diam" class="form-label">initial diameter (≥30μm)</label>
+								<div class="input-group">
+									<input type="number" id="input-init-diam" value=100 min=30 step="any" class="form-control" required>
+									<span class="input-group-text">μm</span>
+								</div>
 							</div>
-						</div>
-						<div class="input-group mb-3">
-							<label for="input-angle-delta" class="form-label">angle Δ</label>
-							<input type="range" class="form-range" id="input-angle-delta" value=40>
-						</div>
-						<div class="form-check form-switch mb-3">
-							<input class="form-check-input" type="checkbox" role="switch" id="input-nephron" checked>
-							<label class="form-check-label" for="input-nephron">draw nephrons</label>
-						</div>
-						<div class="mb-3">
-							<button type="submit" id="generate-button" class="btn btn-primary">generate</button>
-						</div>
-					</form>
+							<div class="input-group mb-3">
+								<label for="input-angle-delta" class="form-label">angle Δ</label>
+								<input type="range" class="form-range" id="input-angle-delta" value=40>
+							</div>
+							<div class="form-check form-switch mb-3">
+								<input class="form-check-input" type="checkbox" role="switch" id="input-nephron" checked>
+								<label class="form-check-label" for="input-nephron">draw nephrons</label>
+							</div>
+							<div class="mb-3">
+								<button type="submit" id="generate-button" class="btn btn-primary">generate</button>
+							</div>
+						</form>
+					</div>
 				</div>
-				<!-- the text -->
-				<div class="col order-md-first">
-					<h1>Nephron vascular network</h1>
-					<p> lots of interesting text here </p>
+				<!-- the left column -->
+				<div class="col order-md-first overflow-auto" style="margin-right: 1em">
+					<h1>Kidney arterial network</h1>
+					<p>
+						Lorem ipsum dolor sit amet, consectetur adipiscing elit. Morbi sit amet neque ac elit rhoncus consequat ac a arcu. Aenean feugiat, tortor sit amet convallis lacinia, mauris lectus gravida purus, vitae bibendum diam arcu ut lectus. Integer lobortis sapien at leo venenatis aliquet. Suspendisse ultricies vitae urna mollis volutpat. Donec vel mattis sapien, ut luctus nisi. Praesent ac enim gravida, sodales ante eget, bibendum mi. Cras velit libero, feugiat dapibus suscipit quis, hendrerit vitae erat. Nam dictum consectetur neque id malesuada. Nulla sem nunc, mollis sed enim eget, accumsan vehicula neque. Sed hendrerit nisl quis dui mattis bibendum.
+					</p>
+
+					<p>
+						Vivamus dictum dapibus diam imperdiet cursus. Aliquam dapibus erat sit amet tempus sagittis. Fusce a sem ac sapien porttitor ultricies. Fusce turpis urna, eleifend eu rutrum a, luctus in est. Curabitur vel nisl hendrerit, facilisis odio at, commodo urna. Praesent ante erat, venenatis venenatis ex quis, convallis venenatis ipsum. Vestibulum ultricies urna et ultricies consectetur. Quisque quis lectus luctus, sodales neque nec, auctor risus. Integer odio lacus, viverra eu aliquet eu, vulputate vel nisl. In ac dignissim massa, eu iaculis quam. Mauris vel dolor risus. Sed ex diam, feugiat eu magna a, varius dictum dui.
+					</p>
+
+					<p>
+						Etiam purus risus, tempus auctor volutpat vel, euismod ut nisi. Nam sit amet eros vel mi gravida volutpat nec at odio. Aliquam nec libero sit amet massa viverra porttitor. Pellentesque imperdiet sit amet risus a ultricies. Mauris nibh justo, suscipit non porttitor et, rutrum non lacus. Donec sodales sed mauris nec facilisis. Etiam egestas, ipsum vestibulum pharetra rutrum, ex nisl euismod tellus, quis vulputate tellus ipsum sit amet tortor. Integer mollis sodales nunc sed scelerisque. Sed egestas fermentum velit, ac varius quam placerat eu. Suspendisse congue lobortis nibh eu lobortis. Duis molestie, mi faucibus mollis aliquam, eros urna volutpat felis, non fringilla sapien quam sed dui. Praesent sem magna, dictum in dui eu, mollis feugiat eros. Nunc maximus aliquam scelerisque. Curabitur ultricies lacus nec sem condimentum, id facilisis sapien hendrerit. Interdum et malesuada fames ac ante ipsum primis in faucibus. Donec gravida semper orci eget suscipit.
+					</p>
 				</div>
 			</div>
 		</div>
