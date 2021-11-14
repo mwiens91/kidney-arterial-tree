@@ -6,9 +6,11 @@ const MAX_HEIGHT = 690;
 // This will store the branches to render
 let branches;
 
-// Starting and stop diameter
+// Starting and stop diameter - the stop diameter is fixed (some values
+// in the distributions to generate the trees seem to depend on this
+// value)
 let initDiam;
-let stopDiam;
+const STOP_DIAM = 22;
 
 // Flag for whether to draw nephrons
 let drawNephrons;
@@ -86,12 +88,12 @@ const drawTree = (initialize = true, drawNephrons = false) => {
 
 const generate = (initialize) => {
   initDiam = parseFloat(document.getElementById("input-init-diam").value);
-  stopDiam = parseFloat(document.getElementById("input-stop-diam").value);
   drawNephrons = document.getElementById("input-nephron").checked;
   angleDelta = document.getElementById("input-angle-delta").value / 200;
   treeType = document.getElementById("form-select").value; // TODO use this
 
-  branches = makeABTBranches(initDiam, stopDiam, angleDelta);
+  branches = makeABTBranches(initDiam, STOP_DIAM, angleDelta);
+
   drawTree(initialize, drawNephrons);
 };
 

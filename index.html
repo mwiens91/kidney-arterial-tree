@@ -12,6 +12,9 @@
 
 		<!-- d3 -->
 		<script type="text/javascript" src="https://d3js.org/d3.v7.min.js"></script>
+
+		<!-- css -->
+		<link rel="stylesheet" type="text/css" href="css/style.css" />
 	</head>
 	<body>
 		<div class="container pt-3">
@@ -35,16 +38,9 @@
 							</div>
 						</div>
 						<div class="mb-3">
-							<label for="input-init-diam" class="form-label">initial diameter</label>
+							<label for="input-init-diam" class="form-label">initial diameter (≥30μm)</label>
 							<div class="input-group">
-								<input type="text" id="input-init-diam" value=100 pattern="(?:[1-9]\d*|0)?(?:\.\d+)?" class="form-control" required>
-								<span class="input-group-text">μm</span>
-							</div>
-						</div>
-						<div class="mb-3">
-							<label for="input-stop-diam" class="form-label">stop diameter</label>
-							<div class="input-group">
-								<input type="text" id="input-stop-diam" value=22 pattern="(?:[1-9]\d*|0)?(?:\.\d+)?" class="form-control" required>
+								<input type="number" id="input-init-diam" value=100 min=30 step="any" class="form-control" required>
 								<span class="input-group-text">μm</span>
 							</div>
 						</div>
