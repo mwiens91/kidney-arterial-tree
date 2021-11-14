@@ -1,10 +1,14 @@
-/* no increment/decrement buttons on number inputs */
+/*
+ * no increment/decrement buttons on number inputs
+ * see https://stackoverflow.com/a/4298216
+ */
 input::-webkit-outer-spin-button,
 input::-webkit-inner-spin-button {
-    -webkit-appearance: none;
-    margin: 0;
+	display: none;
+	-webkit-appearance: none;
+	margin: 0;
 }
 
 input[type=number] {
-    -moz-appearance:textfield; /* for Firefox */
+	-moz-appearance:textfield; /* for Firefox */
 }
