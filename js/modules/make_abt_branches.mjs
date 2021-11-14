@@ -51,7 +51,7 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
     if (childDiam <= stopDiam) {
       len = getAfferentLength(parentBranch.diameter);
 
-      if (left === true) {
+      if (left) {
         angle += ada;
       } else {
         angle -= ada;
@@ -61,7 +61,7 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
     } else {
       len = getLength(childDiam);
 
-      if (left === true) {
+      if (left) {
         angle += da;
       } else {
         angle -= da;
@@ -94,7 +94,7 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
     branches.push(branch);
 
     // Continue branching
-    if (branch.isAfferent === false) {
+    if (!branch.isAfferent) {
       // Make child branches
       const firstDaughterDiam = getFirstDaughterDiam(branch.diameter);
       const secondDaughterDiam = getSecondDaughterDiam(

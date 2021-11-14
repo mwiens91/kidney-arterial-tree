@@ -29,7 +29,7 @@ const resize = () => {
 };
 
 const drawTree = (initialize = true, drawNephrons = false) => {
-  if (initialize === false) {
+  if (!initialize) {
     d3.selectAll("circle").remove();
     d3.selectAll("line").remove();
   }
@@ -69,7 +69,7 @@ const drawTree = (initialize = true, drawNephrons = false) => {
     .attr("id", (d) => "id-" + d.i);
 
   // Draw the nephrons if we're asked to
-  if (drawNephrons === true) {
+  if (drawNephrons) {
     g.selectAll("circle")
       .data(branches.filter((branch) => branch.isAfferent))
       .enter()
