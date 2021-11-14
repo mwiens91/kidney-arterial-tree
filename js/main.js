@@ -15,9 +15,6 @@ const STOP_DIAM = 22;
 // Flag for whether to draw nephrons
 let drawNephrons;
 
-// How big to draw nephrons
-const NEPHRON_RADIUS = 20;
-
 // Angle delta
 let angleDelta;
 
@@ -39,15 +36,24 @@ const drawTree = (initialize = true, drawNephrons = false) => {
     d3.selectAll("line").remove();
   }
 
-  // Find extrema of coordinates: adding the radius of nephron circles
-  // here
+  // Find extrema of coordinates
   const xVals = branches.map((branch) => [branch.x1, branch.x2]).flat();
-  const minX = Math.min(...xVals) - NEPHRON_RADIUS;
-  const maxX = Math.max(...xVals) + NEPHRON_RADIUS;
+  let minX = Math.min(...xVals);
+  let maxX = Math.max(...xVals);
 
   const yVals = branches.map((branch) => [branch.y1, branch.y2]).flat();
-  const minY = Math.min(...yVals) - NEPHRON_RADIUS;
-  const maxY = Math.max(...yVals) + NEPHRON_RADIUS;
+  let minY = Math.min(...yVals);
+  let maxY = Math.max(...yVals);
+
+  // Dynamically scale nephron radius as a function of viewbox
+  const nephronRadius = Math.max(10, (maxY - minY) / 500);
+
+  // Add the nephron radius to the extrema of coordinates so they're
+  // always shown in the viewbox
+  minX -= nephronRadius * 2;
+  maxX += nephronRadius * 2;
+  minY -= nephronRadius * 2;
+  maxY += nephronRadius * 2;
 
   // Draw the tree
   const svg = d3
@@ -82,7 +88,7 @@ const drawTree = (initialize = true, drawNephrons = false) => {
       .append("circle")
       .attr("cx", (d) => d.x2)
       .attr("cy", (d) => d.y2)
-      .attr("r", NEPHRON_RADIUS)
+      .attr("r", nephronRadius)
       .attr("id", (d) => "id-nephron" + d.i);
   }
 
