@@ -50,22 +50,11 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
 
     if (childDiam <= stopDiam) {
       len = getAfferentLength(parentBranch.diameter);
-
-      if (left) {
-        angle += ada;
-      } else {
-        angle -= ada;
-      }
-
+      angle += left ? ada : -ada;
       isAfferent = true;
     } else {
       len = getLength(childDiam);
-
-      if (left) {
-        angle += da;
-      } else {
-        angle -= da;
-      }
+      angle += left ? da : -da;
     }
 
     // Get endpoint
