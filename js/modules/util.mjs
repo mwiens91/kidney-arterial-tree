@@ -76,7 +76,7 @@ const getSegmentedAfferentDiam = () => {
 };
 
 // Get next segmented afferent arteriole position in the KBAST
-const getNextSegmentedPosition = () => - Math.log(Math.random()) * 9.93567e-1
+const getNextSegmentPosition = () => -Math.log(Math.random()) * 9.93567e1;
 
 // Calculate endpoint of branch
 const getEndPoint = (x, y, len, angle) => ({
@@ -90,6 +90,6 @@ export {
   getFirstDaughterDiam,
   getSecondDaughterDiam,
   getSegmentedAfferentDiam,
-  getNextSegmentedPosition,
+  getNextSegmentPosition,
   getEndPoint,
 };

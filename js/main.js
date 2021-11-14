@@ -1,4 +1,5 @@
 import { makeBranches as makeABTBranches } from "./modules/make_abt_branches.mjs";
+import { makeBranches as makeKSABTBranches } from "./modules/make_ksabt_branches.mjs";
 
 // Maximum svg height
 const MAX_HEIGHT = 690;
@@ -93,9 +94,13 @@ const generate = (initialize) => {
   initDiam = parseFloat(document.getElementById("input-init-diam").value);
   drawNephrons = document.getElementById("input-nephron").checked;
   angleDelta = document.getElementById("input-angle-delta").value / 200;
-  treeType = document.getElementById("form-select").value; // TODO use this
+  treeType = document.getElementById("form-select").value;
 
-  branches = makeABTBranches(initDiam, STOP_DIAM, angleDelta);
+  if (treeType === "KSABT") {
+    branches = makeKSABTBranches(initDiam, STOP_DIAM, angleDelta);
+  } else {
+    branches = makeABTBranches(initDiam, STOP_DIAM, angleDelta);
+  }
 
   drawTree(initialize, drawNephrons);
 };
