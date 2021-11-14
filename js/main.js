@@ -6,9 +6,8 @@ const MAX_HEIGHT = 690;
 // This will store the branches to render
 let branches;
 
-// Starting and stop diameter - the stop diameter is fixed (some values
-// in the distributions to generate the trees seem to depend on this
-// value)
+// Starting and stop diameter—the stop diameter is fixed (some values in
+// the distributions to generate the trees seem to depend on this value)
 let initDiam;
 const STOP_DIAM = 22;
 
@@ -39,7 +38,7 @@ const drawTree = (initialize = true, drawNephrons = false) => {
     d3.selectAll("line").remove();
   }
 
-  // Find extrema of coordinates - adding the radius of nephron circles
+  // Find extrema of coordinates: adding the radius of nephron circles
   // here
   const xVals = branches.map((branch) => [branch.x1, branch.x2]).flat();
   const minX = Math.min(...xVals) - NEPHRON_RADIUS;

@@ -33,7 +33,7 @@ const makeInitialBranch = (diam) => {
   };
 };
 
-// Makes everything. "da" is an "angle factor" -- use this to control
+// Makes everything. "da" is an "angle factor": use this to control
 // "spread". "ada" is the "angle factor" specific for afferent
 // arterioles. "ar" is a measure of randomness for the angle.
 const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
