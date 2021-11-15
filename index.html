@@ -61,132 +61,134 @@
 					</div>
 				</div>
 				<!-- the left column -->
-				<div class="col order-md-first overflow-auto" style="margin-right: 4.5em">
-					<h1 style="margin-bottom: 0.5em">Kidney arterial network</h1>
-					<h2>Overview</h2>
-					<p>
-						The kidneys are essential components in
-						regulating properties of our blood (for example,
-						blood pressure, acidity, etc.) so that these
-						properties lie within ranges in which we don't
-						die. Despite each kidney accounting for ~0.5% of
-						body weight, the kidneys receive ~20% of cardiac
-						output. <a href="#ref-1">[1]</a>
-					</p>
-					<p>
-						The functional unit of the kidney is the
-						nephron. Each human kidney contains between
-						0.30–1.4 million nephrons <a href="#ref-2">[2]</a>
-						(note that this wide range correctly implies
-						that the kidneys are almost magically able to
-						safely compensate for substantial nephron loss).
-					</p>
-					<p>
-						Nephrons couple and synchronize through
-						hemodynamic interactions (nephrons share common
-						blood vessels that "feed them")
-						and electrical signals (nephrons have
-						<a href="https://en.wikipedia.org/wiki/Tubuloglomerular_feedback">a feedback mechanism</a>
-						that transmits electrical messages across cells).
-						Understanding synchronization behaviour
-						therefore requires understanding the vascular structure
-						that connects nephrons. This vascular structure
-						is an ongoing and active area of research.
-					</p>
-					<p>
-						In 2016, D.D. Postnov <i>et al.</i> published the paper
-						<a href="#ref-3">[3]</a> which provides an algorithm
-						for generating representations of the kidney's
-						vascular topology: this algorithm is visualized
-						in the tree at the top of this page. Main blood vessels are
-						represented in <span style="color: #FF0000">red</span>,
-						<a href="https://en.wikipedia.org/wiki/Afferent_arterioles">afferent arterioles</a>
-						are represented in
-						<span style="color: #008000">green</span>, and nephrons (if you choose to draw them)
-						are represented by <b>black</b> circles.
-					</p>
-					<p>
-						There are two algorithms represented here: the
-						asymmetric bifurcating tree (ABT), and the
-						kidney-specific asymmetric bifurcating tree
-						(KSABT). The ABT is a simpler algorithm
-						which describes the general branching
-						patterns that blood vessels exhibit in the
-						kidney. The KSABT, which is the "true"
-						structure, follows the same branching patterns
-						as the ABT, but nephrons are additionally
-						allowed to branch off of main blood vessels
-						before they split into daughter vessels.
-					</p>
-					<h2>Usage</h2>
-					<p>
-						In the "options panel" you have a few
-						options:
-					</p>
-					<ul style="margin-left: -5px">
-						<li>
-							<b>tree type</b>:
-							selects which kind of tree you want to
-							draw (described in the "Overview" section)
-						</li>
-						<li>
-							<b>initial diameter</b>:
-							this controls the diameter of the largest
-							vessel and ultimately dictates the size of the tree.
-							<i>Careful!</i> Going above values ≥300μm
-							can cause serious slowdowns.
-						</li>
-						<li>
-							<b>angle Δ</b>:
-							this controls the spread of the tree
-						</li>
-						<li>
-							<b>draw nephrons</b>:
-							this determines whether to draw nephrons;
-							note that for large trees or for the KSABT
-							you might want to disable this to reduce clutter
-						</li>
-					</ul>
-					<p>
-						You can also <b>zoom/pan</b> using a
-						mouse, or if you're on mobile, by inputting
-						the appropriate gestures.
-					</p>
-					<h2>A note about interpretation</h2>
-					<p>
-						The algorithms described in
-						<a href="#ref-3">[3]</a> specify the lengths of
-						vessels and where along these lengths daughter
-						vessels branch from. The actual angles (in 3D-
-						or 2D-space) at which daughter vessels branch
-						are not included in the algorithm; in this
-						sense, the tree you see is fictitious. Do the
-						actual angles matter, though? It depends on what
-						you're studying. If you're looking at nephron
-						synchronization then the answer is "no". Neither
-						the hemodynamic interactions nor the electrical
-						signals which cause synchronization care about
-						angles of blood vessels; only the length of
-						vessels and where branching happens matter.
-					</p>
-					<h2>References</h2>
-					<div id="ref-1" style="margin-bottom: 0.5em">
-						[1] J. Arciero, L. Ellwein, A. N. F. Versypt, E. Makrides, and A. T. Layton, “Modeling Blood Flow Control in the Kidney,” in <i>Applications of Dynamical Systems in Biology and Medicine</i>, New York, NY, 2015, pp. 55–73. doi: <a href="https://doi.org/10.1007/978-1-4939-2782-1_3">10.1007/978-1-4939-2782-1_3</a>.
+				<div class="col order-md-first">
+					<div style="max-width: 900px">
+						<h1 style="margin-bottom: 0.5em">Kidney arterial network</h1>
+						<h2>Overview</h2>
+						<p>
+							The kidneys are essential components in
+							regulating properties of our blood (for example,
+							blood pressure, acidity, etc.) so that these
+							properties lie within ranges in which we don't
+							die. Despite each kidney accounting for ~0.5% of
+							body weight, the kidneys receive ~20% of cardiac
+							output. <a href="#ref-1">[1]</a>
+						</p>
+						<p>
+							The functional unit of the kidney is the
+							nephron. Each human kidney contains between
+							0.30–1.4 million nephrons <a href="#ref-2">[2]</a>
+							(note that this wide range correctly implies
+							that the kidneys are almost magically able to
+							safely compensate for substantial nephron loss).
+						</p>
+						<p>
+							Nephrons couple and synchronize through
+							hemodynamic interactions (nephrons share common
+							blood vessels that "feed them")
+							and electrical signals (nephrons have
+							<a href="https://en.wikipedia.org/wiki/Tubuloglomerular_feedback">a feedback mechanism</a>
+							that transmits electrical messages across cells).
+							Understanding synchronization behaviour
+							therefore requires understanding the vascular structure
+							that connects nephrons. This vascular structure
+							is an ongoing and active area of research.
+						</p>
+						<p>
+							In 2016, D.D. Postnov <i>et al.</i> published the paper
+							<a href="#ref-3">[3]</a> which provides an algorithm
+							for generating representations of the kidney's
+							vascular topology: this algorithm is visualized
+							in the tree at the top of this page. Main blood vessels are
+							represented in <span style="color: #FF0000">red</span>,
+							<a href="https://en.wikipedia.org/wiki/Afferent_arterioles">afferent arterioles</a>
+							are represented in
+							<span style="color: #008000">green</span>, and nephrons (if you choose to draw them)
+							are represented by <b>black</b> circles.
+						</p>
+						<p>
+							There are two algorithms represented here: the
+							asymmetric bifurcating tree (ABT), and the
+							kidney-specific asymmetric bifurcating tree
+							(KSABT). The ABT is a simpler algorithm
+							which describes the general branching
+							patterns that blood vessels exhibit in the
+							kidney. The KSABT, which is the "true"
+							structure, follows the same branching patterns
+							as the ABT, but nephrons are additionally
+							allowed to branch off of main blood vessels
+							before they split into daughter vessels.
+						</p>
+						<h2>Usage</h2>
+						<p>
+							In the "options panel" you have a few
+							options:
+						</p>
+						<ul style="margin-left: -5px">
+							<li>
+								<b>tree type</b>:
+								selects which kind of tree you want to
+								draw (described in the "Overview" section)
+							</li>
+							<li>
+								<b>initial diameter</b>:
+								this controls the diameter of the largest
+								vessel and ultimately dictates the size of the tree.
+								<i>Careful!</i> Going above values ≥300μm
+								can cause serious slowdowns.
+							</li>
+							<li>
+								<b>angle Δ</b>:
+								this controls the spread of the tree
+							</li>
+							<li>
+								<b>draw nephrons</b>:
+								this determines whether to draw nephrons;
+								note that for large trees or for the KSABT
+								you might want to disable this to reduce clutter
+							</li>
+						</ul>
+						<p>
+							You can also <b>zoom/pan</b> using a
+							mouse, or if you're on mobile, by inputting
+							the appropriate gestures.
+						</p>
+						<h2>A note about interpretation</h2>
+						<p>
+							The algorithms described in
+							<a href="#ref-3">[3]</a> specify the lengths of
+							vessels and where along these lengths daughter
+							vessels branch from. The actual angles (in 3D-
+							or 2D-space) at which daughter vessels branch
+							are not included in the algorithm; in this
+							sense, the tree you see is fictitious. Do the
+							actual angles matter, though? It depends on what
+							you're studying. If you're looking at nephron
+							synchronization then the answer is "no". Neither
+							the hemodynamic interactions nor the electrical
+							signals which cause synchronization care about
+							angles of blood vessels; only the length of
+							vessels and where branching happens matter.
+						</p>
+						<h2>References</h2>
+						<div id="ref-1" style="margin-bottom: 0.5em">
+							[1] J. Arciero, L. Ellwein, A. N. F. Versypt, E. Makrides, and A. T. Layton, “Modeling Blood Flow Control in the Kidney,” in <i>Applications of Dynamical Systems in Biology and Medicine</i>, New York, NY, 2015, pp. 55–73. doi: <a href="https://doi.org/10.1007/978-1-4939-2782-1_3">10.1007/978-1-4939-2782-1_3</a>.
+						</div>
+						<div id="ref-2" style="margin-bottom: 0.5em">
+							[2] A. T. Layton, L. C. Moore, and H. E. Layton, “Multistable Dynamics Mediated by Tubuloglomerular Feedback in a Model of Coupled Nephrons,” <i>Bull. Math. Biol.</i>, vol. 71, no. 3, p. 515, Feb. 2009, doi: <a href="https://doi.org/10.1007/s11538-008-9370-x">10.1007/s11538-008-9370-x</a>.
+						</div>
+						<div id="ref-3" style="margin-bottom: 1rem">
+							[3] D. D. Postnov <i>et al.</i>, “Modeling of Kidney Hemodynamics: Probability-Based Topology of an Arterial Network,” <i>PLOS Computational Biology</i>, vol. 12, no. 7, p. e1004922, Jul. 2016, doi: <a href="https://doi.org/10.1371/journal.pcbi.1004922">10.1371/journal.pcbi.1004922</a>.
+						</div>
+						<h2>About</h2>
+						<p>
+							The source code for this page is available
+							<a href="https://github.com/mwiens91/kidney-arterial-tree">here</a>.
+							The code is written in JavaScript
+							and the tree is rendered using the <a href="https://d3js.org/">D3.js</a> library.
+							The styling of this page is mostly <a href="https://getbootstrap.com/">Bootstrap</a>.
+						</p>
 					</div>
-					<div id="ref-2" style="margin-bottom: 0.5em">
-						[2] A. T. Layton, L. C. Moore, and H. E. Layton, “Multistable Dynamics Mediated by Tubuloglomerular Feedback in a Model of Coupled Nephrons,” <i>Bull. Math. Biol.</i>, vol. 71, no. 3, p. 515, Feb. 2009, doi: <a href="https://doi.org/10.1007/s11538-008-9370-x">10.1007/s11538-008-9370-x</a>.
-					</div>
-					<div id="ref-3" style="margin-bottom: 1rem">
-						[3] D. D. Postnov <i>et al.</i>, “Modeling of Kidney Hemodynamics: Probability-Based Topology of an Arterial Network,” <i>PLOS Computational Biology</i>, vol. 12, no. 7, p. e1004922, Jul. 2016, doi: <a href="https://doi.org/10.1371/journal.pcbi.1004922">10.1371/journal.pcbi.1004922</a>.
-					</div>
-					<h2>About</h2>
-					<p>
-						The source code for this page is available
-						<a href="https://github.com/mwiens91/kidney-arterial-tree">here</a>.
-						The code is written in JavaScript
-						and the tree is rendered using the <a href="https://d3js.org/">D3.js</a> library.
-						The styling of this page is mostly <a href="https://getbootstrap.com/">Bootstrap</a>.
-					</p>
 				</div>
 			</div>
 		</div>
