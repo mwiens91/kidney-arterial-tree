@@ -68,6 +68,10 @@ const drawTree = (initialize = true, drawNephrons = false) => {
 
   const g = svg.append("g");
 
+  // Sort branches so afferent arterioles are drawn first
+  branches.sort((a, b) => b.isAfferent - a.isAfferent)
+
+  // Draw the vessels
   g.selectAll("line")
     .data(branches)
     .enter()
