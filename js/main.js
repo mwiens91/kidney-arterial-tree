@@ -4,23 +4,6 @@ import { makeBranches as makeKSABTBranches } from "./modules/make_ksabt_branches
 // Maximum svg height
 const MAX_HEIGHT = 690;
 
-// This will store the branches to render
-let branches;
-
-// Starting and stop diameter—the stop diameter is fixed (some values in
-// the distributions to generate the trees seem to depend on this value)
-let initDiam;
-const STOP_DIAM = 22;
-
-// Flag for whether to draw nephrons
-let drawNephrons;
-
-// Angle delta
-let angleDelta;
-
-// Type of tree
-let treeType;
-
 const resize = () => {
   const svgDiv = document.getElementById("div-svg");
   const width = svgDiv.clientWidth;
@@ -30,7 +13,9 @@ const resize = () => {
     .attr("height", () => (width > MAX_HEIGHT ? MAX_HEIGHT : width));
 };
 
-const drawTree = (initialize = true, drawNephrons = false) => {
+// Render the tree
+const drawTree = (branches, initialize = true, drawNephrons = false) => {
+  // Clear previous render
   if (!initialize) {
     d3.selectAll("circle").remove();
     d3.selectAll("line").remove();
@@ -69,7 +54,7 @@ const drawTree = (initialize = true, drawNephrons = false) => {
   const g = svg.append("g");
 
   // Sort branches so afferent arterioles are drawn first
-  branches.sort((a, b) => b.isAfferent - a.isAfferent)
+  branches.sort((a, b) => b.isAfferent - a.isAfferent);
 
   // Draw the vessels
   g.selectAll("line")
@@ -100,22 +85,34 @@ const drawTree = (initialize = true, drawNephrons = false) => {
   resize();
 };
 
+// Get the options input and generate the tree
 const generate = (initialize) => {
-  initDiam = parseFloat(document.getElementById("input-init-diam").value);
-  drawNephrons = document.getElementById("input-nephron").checked;
-  angleDelta = document.getElementById("input-angle-delta").value / 200;
-  treeType = document.getElementById("form-select").value;
+  // This will store the branches to render
+  let branches;
+
+  // Initial diameter
+  const initDiam = parseFloat(document.getElementById("input-init-diam").value);
+
+  // Flag for whether to draw nephrons
+  const drawNephrons = document.getElementById("input-nephron").checked;
+
+  // Angle delta
+  const angleDelta = document.getElementById("input-angle-delta").value / 200;
+
+  // Type of tree
+  const treeType = document.getElementById("form-select").value;
 
   if (treeType === "KSABT") {
-    branches = makeKSABTBranches(initDiam, STOP_DIAM, angleDelta);
+    branches = makeKSABTBranches(initDiam, 22, angleDelta);
   } else {
-    branches = makeABTBranches(initDiam, STOP_DIAM, angleDelta);
+    branches = makeABTBranches(initDiam, 22, angleDelta);
   }
 
-  drawTree(initialize, drawNephrons);
+  drawTree(branches, initialize, drawNephrons);
 };
 
-// Redraw the tree on submitting form
+// Redraw the tree on submitting form—also make sure to block the submit
+// propagation so the page doesn't reload
 const form = document.getElementById("form-options");
 form.addEventListener("submit", (e) => {
   if (!form.checkValidity()) {
