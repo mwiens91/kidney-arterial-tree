@@ -159,10 +159,10 @@ if (params.hasOwnProperty("angledelta")) {
   }
 }
 
-if (params.hasOwnProperty("inputnephrons")) {
-  const inputNephrons = !(params.inputnephrons.toLowerCase() === "false");
+if (params.hasOwnProperty("drawnephrons")) {
+  const drawNephrons = !(params.drawnephrons.toLowerCase() === "false");
 
-  document.getElementById("input-nephron").checked = inputNephrons;
+  document.getElementById("input-nephron").checked = drawNephrons;
 }
 
 generate(true);
