@@ -128,4 +128,41 @@ form.addEventListener("submit", (e) => {
 // Resize the svg when the window size changes
 window.addEventListener("resize", resize);
 
+// Grab any query params and set these as options
+const urlSearchParams = new URLSearchParams(window.location.search);
+const params = Object.fromEntries(urlSearchParams.entries());
+
+// Tree-type query param
+if (params.hasOwnProperty("treetype")) {
+  const treeType = params.treetype.toUpperCase();
+
+  if (treeType === "ABT" || treeType === "KSABT") {
+    document.getElementById("form-select").value = treeType;
+  }
+}
+
+// Initial diameter query param
+if (params.hasOwnProperty("initdiam")) {
+  const initDiam = parseFloat(params.initdiam);
+
+  if (initDiam >= 30) {
+    document.getElementById("input-init-diam").value = initDiam;
+  }
+}
+
+// Angle delta query param
+if (params.hasOwnProperty("angledelta")) {
+  const angleDelta = parseInt(params.angledelta);
+
+  if (angleDelta >= 0 && angleDelta <= 100) {
+    document.getElementById("input-angle-delta").value = angleDelta;
+  }
+}
+
+if (params.hasOwnProperty("inputnephrons")) {
+  const inputNephrons = !(params.inputnephrons.toLowerCase() === "false");
+
+  document.getElementById("input-nephron").checked = inputNephrons;
+}
+
 generate(true);
