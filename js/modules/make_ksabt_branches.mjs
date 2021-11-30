@@ -41,11 +41,12 @@ const makeInitialBranch = (diam) => {
 // Makes everything. "da" is an "angle factor": use this to control
 // "spread". "ada" is the "angle factor" specific for afferent
 // arterioles. "ar" is a measure of randomness for the angle.
-// "forcedLength" specifies a length to force the child branch to: this
-// is necessary when continuing a segmented branch; it defaults to null.
 const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
   let branches = [];
 
+  // "forcedLength" specifies a length to force the child branch to:
+  // this is necessary when continuing a segmented branch; it defaults
+  // to null
   const makeChildBranch = (
     parentBranch,
     childDiam,
