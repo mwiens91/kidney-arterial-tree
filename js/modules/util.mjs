@@ -1,9 +1,9 @@
-// Utility function for generating both ABT and KSABT trees. You'll find
-// many magic numbers and confusing methods without comments; for these,
-// I don't fully understand them either, but it's what the paper did.
+// Utility function for generating both ABT and KSABT trees.
+// Many of these functions use polynomial approximations to
+// distributions.
 
-// This is used for many of the distributions, but I don't really
-// understand what it does
+// Get a random number from the standard normal distribution (using the
+// Box-Muller transform)
 const getRndStdNormal = () => {
   const rnd1 = Math.random();
   const rnd2 = Math.random();
@@ -21,9 +21,7 @@ const getLength = (diam) => {
   const len = p1 * diam + p2;
   const lenDeviation = (7.6004e-1 * len + -1.3577e2) * rndStdNormal;
 
-  const finalLen = len + lenDeviation;
-
-  return finalLen > 0 ? finalLen : getLength(diam);
+  return len + lenDeviation;
 };
 
 // Length of an afferent arteriole vessel using the vessel's parent
@@ -37,6 +35,8 @@ const getAfferentLength = (parentDiam) => {
   const len = p1 * parentDiam + p2;
   const lenDeviation = (7.6004e-1 * len + -1.3577e2) * rndStdNormal;
 
+  // Not guaranteed to be a positive number, so we'll need to keep
+  // trying until we yield one
   const finalLen = len + lenDeviation;
 
   return finalLen > 0 ? finalLen : getAfferentLength(parentDiam);
@@ -55,9 +55,9 @@ const getFirstDaughterDiam = (parentDiam) => {
     p1 * parentDiam ** 3 + p2 * parentDiam ** 2 + p3 * parentDiam + p4;
   const diamDeviation = (8.7881e-2 * diam + 2.1139e-1) * rndStdNormal;
 
-  const finalDiam = diam + diamDeviation;
-
-  return finalDiam < parentDiam ? finalDiam : getFirstDaughterDiam(parentDiam);
+  // This number is guaranteed to be positive so long as
+  // parentDiam>~6.61µm, which will always be satisfied
+  return diam + diamDeviation;
 };
 
 // Murray's law to calculate second daughter diameter given parent
@@ -70,9 +70,7 @@ const getSecondDaughterDiam = (parentDiam, firstDaughterDiam) =>
 const getSegmentedAfferentDiam = () => {
   const rndStdNormal = getRndStdNormal();
 
-  const finalDiam = 1.43e1 + (8.7881e-2 * 1.43e1 + 2.1139e-1) * rndStdNormal;
-
-  return finalDiam > 0 ? finalDiam : getSegmentedAfferentDiam();
+  return 1.43e1 + (8.7881e-2 * 1.43e1 + 2.1139e-1) * rndStdNormal;
 };
 
 // Get next segmented afferent arteriole position in the KBAST
