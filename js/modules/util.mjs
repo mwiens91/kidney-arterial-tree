@@ -19,7 +19,7 @@ const getLength = (diam) => {
   const p2 = 1.8468e2;
 
   const len = p1 * diam + p2;
-  const lenDeviation = (7.6004e-1 * len + -1.3588e2) * rndStdNormal;
+  const lenDeviation = (7.6004e-1 * len + -1.3577e2) * rndStdNormal;
 
   const finalLen = len + lenDeviation;
 
