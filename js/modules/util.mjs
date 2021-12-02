@@ -21,7 +21,10 @@ const getLength = (diam) => {
   const len = p1 * diam + p2;
   const lenDeviation = (7.6004e-1 * len + -1.3577e2) * rndStdNormal;
 
-  return len + lenDeviation;
+  // Need to make sure this is positive
+  const finalLen = len + lenDeviation;
+
+  return finalLen > 0 ? finalLen : getLength(diam);
 };
 
 // Length of an afferent arteriole vessel using the vessel's parent
@@ -55,9 +58,12 @@ const getFirstDaughterDiam = (parentDiam) => {
     p1 * parentDiam ** 3 + p2 * parentDiam ** 2 + p3 * parentDiam + p4;
   const diamDeviation = (8.7881e-2 * diam + 2.1139e-1) * rndStdNormal;
 
-  // This number is guaranteed to be positive so long as
-  // parentDiam>~6.61µm, which will always be satisfied
-  return diam + diamDeviation;
+  // Need to make sure this is less than the parentDiam and positive
+  const finalDiam = diam + diamDeviation;
+
+  return finalDiam < parentDiam && finalDiam > 0
+    ? finalDiam
+    : getFirstDaughterDiam(parentDiam);
 };
 
 // Murray's law to calculate second daughter diameter given parent
