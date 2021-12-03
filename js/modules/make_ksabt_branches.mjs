@@ -112,8 +112,7 @@ const makeBranches = (initDiam, stopDiam, da = 0.2, ar = 0.2, ada = 0.6) => {
           ? branch.nextSegmentPosition
           : getNextSegmentPosition();
 
-      // Determine whether to segment or push it to the next set of
-      // branches
+      // Determine whether to segment
       if (nextSegmentPosition >= branch.len) {
         // We're not segmenting, so just push the branch
         branches.push(branch);
