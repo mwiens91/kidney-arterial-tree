@@ -8,19 +8,13 @@ const resize = () => {
   const svgDiv = document.getElementById("div-svg");
   const width = svgDiv.clientWidth;
 
-  d3.select("svg")
+  svg
     .attr("width", width)
     .attr("height", () => (width > MAX_HEIGHT ? MAX_HEIGHT : width));
 };
 
 // Render the tree
 const drawTree = (branches, initialize = true, drawNephrons = false) => {
-  // Clear previous render
-  if (!initialize) {
-    d3.selectAll("circle").remove();
-    d3.selectAll("line").remove();
-  }
-
   // Find extrema of coordinates
   const xVals = branches.map((branch) => [branch.x1, branch.x2]).flat();
   let minX = Math.min(...xVals);
@@ -40,22 +34,20 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
   minY -= nephronRadius * 2;
   maxY += nephronRadius * 2;
 
-  // Draw the tree
-  const svg = d3
-    .select("svg")
-    .call(
-      d3
-        .zoom()
-        .scaleExtent([0.7, Infinity])
-        //.translateExtent([[minX, minY], [maxX, maxY]])
-        .on("zoom", ({ transform }) => g.attr("transform", transform)),
-    )
-    .attr(
-      "viewBox",
-      minX + " " + minY + " " + (maxX - minX) + " " + (maxY - minY),
-    );
+  // Initialize or clear previous render
+  if (!initialize) {
+    // Remove children
+    g.selectAll("*").remove();
 
-  const g = svg.append("g");
+    // Reset position and zoom
+    svg.call(zoom.transform, d3.zoomIdentity);
+  }
+
+  // Set viewbox
+  const viewBoxStr =
+    minX + " " + minY + " " + (maxX - minX) + " " + (maxY - minY);
+
+  svg.attr("viewBox", viewBoxStr);
 
   // Sort branches so afferent arterioles are drawn first
   branches.sort((a, b) => b.isAfferent - a.isAfferent);
@@ -171,4 +163,11 @@ if (params.hasOwnProperty("drawnephrons")) {
   document.getElementById("input-nephron").checked = drawNephrons;
 }
 
+// Initialize g and zoom element
+const svg = d3.select("svg");
+const g = svg.append("g");
+const zoom = d3.zoom().scaleExtent([0.7, Infinity]);
+svg.call(zoom.on("zoom", ({ transform }) => g.attr("transform", transform)));
+
+// Generate tree
 generate(true);
