@@ -44,10 +44,20 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
   }
 
   // Set viewbox
-  const viewBoxStr =
-    minX + " " + minY + " " + (maxX - minX) + " " + (maxY - minY);
+  const xWidth = maxX - minX;
+  const yWidth = maxY - minY;
+
+  const viewBoxStr = minX + " " + minY + " " + xWidth + " " + yWidth;
 
   svg.attr("viewBox", viewBoxStr);
+
+  // Set translation limits so the tree never completely goes out of
+  // view. The numbers below allow for a lot of translation freedom but
+  // ensure that the tree isn't translated unreachably far.
+  zoom.translateExtent([
+    [minX - 2 * xWidth, minY - 0.9 * yWidth],
+    [maxX + 2 * xWidth, maxY + 0.9 * yWidth],
+  ]);
 
   // Sort branches so afferent arterioles are drawn first
   branches.sort((a, b) => b.isAfferent - a.isAfferent);
