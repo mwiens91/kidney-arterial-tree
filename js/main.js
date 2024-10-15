@@ -44,7 +44,10 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
   const svg = d3
     .select("svg")
     .call(
-      d3.zoom().on("zoom", ({ transform }) => g.attr("transform", transform))
+      d3
+        .zoom()
+        .scaleExtent([0.7, Infinity])
+        .on("zoom", ({ transform }) => g.attr("transform", transform)),
     )
     .attr(
       "viewBox",
