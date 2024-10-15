@@ -29,10 +29,10 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
 
   // Add the nephron radius to the extrema of coordinates so they're
   // always shown in the viewbox
-  minX -= nephronRadius * 2;
-  maxX += nephronRadius * 2;
-  minY -= nephronRadius * 2;
-  maxY += nephronRadius * 2;
+  minX -= nephronRadius;
+  maxX += nephronRadius;
+  minY -= nephronRadius;
+  maxY += nephronRadius;
 
   // Initialize or clear previous render
   if (!initialize) {
