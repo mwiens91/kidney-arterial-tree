@@ -12,3 +12,8 @@ input::-webkit-inner-spin-button {
 input[type="number"] {
   -moz-appearance: textfield; /* for Firefox */
 }
+
+h2 {
+  margin-top: 0.2em;
+  margin-bottom: 0.3em;
+}
