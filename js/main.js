@@ -179,5 +179,8 @@ const g = svg.append("g");
 const zoom = d3.zoom().scaleExtent([0.7, Infinity]);
 svg.call(zoom.on("zoom", ({ transform }) => g.attr("transform", transform)));
 
+// Prevent scrolling the page down when we're at max zoom-out
+svg.call(zoom).on("wheel", (e) => e.preventDefault());
+
 // Generate tree
 generate(true);
