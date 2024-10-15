@@ -47,11 +47,12 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
       d3
         .zoom()
         .scaleExtent([0.7, Infinity])
+        //.translateExtent([[minX, minY], [maxX, maxY]])
         .on("zoom", ({ transform }) => g.attr("transform", transform)),
     )
     .attr(
       "viewBox",
-      minX + " " + minY + " " + (maxX - minX) + " " + (maxY - minY)
+      minX + " " + minY + " " + (maxX - minX) + " " + (maxY - minY),
     );
 
   const g = svg.append("g");
