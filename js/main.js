@@ -86,7 +86,9 @@ const drawTree = (branches, initialize = true, drawNephrons = false) => {
   }
 
   // Fit the svg to its container size
-  resize();
+  if (initialize) {
+    resize();
+  }
 };
 
 // Get the options input and generate the tree
